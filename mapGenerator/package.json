@@ -1,0 +1,21 @@
+{
+  "name": "mapgenerator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erik Mellum",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.1",
+    "esm": "^3.2.25",
+    "html-pdf": "^2.2.0",
+    "loglevel": "^1.6.4",
+    "tmp": "^0.1.0"
+  },
+  "devDependencies": {
+    "opn": "^6.0.0"
+  }
+}

@@ -1,0 +1,59 @@
+module.exports = {
+
+  // Export options
+  //"directory": "/tmp",       // The directory the file gets written into if not using .toFile(filename, callback). default: '/tmp'
+
+  // Papersize Options: http://phantomjs.org/api/webpage/property/paper-size.html
+  "height": "1380",        // allowed units: mm, cm, in, px
+  "width": "1064px",            // allowed units: mm, cm, in, px
+  //- or -
+  //"format": "Letter",        // allowed units: A3, A4, A5, Legal, Letter, Tabloid
+  //"orientation": "portrait", // portrait or landscape
+
+  // Page options
+  "border": "0",             // default is 0, units: mm, cm, in, px
+  //- or -
+  // "border": {
+  //   "top": "25px",            // default is 0, units: mm, cm, in, px
+  //   "right": "25px",
+  //   "bottom": "25px",
+  //   "left": "25px"
+  // },
+
+  // Rendering options
+  //"base": `file:///${__dirname}/..`, // Base path that's used to load files (images, css, js) when they aren't referenced using a host
+
+  // Zooming option, can be used to scale images if `options.type` is not pdf
+  //"zoomFactor": "1", // default is 1
+
+  // File options
+  "type": "pdf",             // allowed file types: png, jpeg, pdf
+  "quality": "100",           // only used for types png & jpeg
+  'phantomArgs': [
+    '--web-security=no',
+    '--ignore-ssl-errors=yes'
+  ],
+  "renderDelay": 0,
+
+  // Script options
+  //"phantomPath": `${__dirname}/../node_modules/phantomjs-prebuilt/bin/phantomjs`, // PhantomJS binary which should get downloaded automatically
+  //"phantomArgs": [], // array of strings used as phantomjs args e.g. ["--ignore-ssl-errors=yes"]
+  //"script": '/url',           // Absolute path to a custom phantomjs script, use the file in lib/scripts as example
+  "timeout": 30000,           // Timeout that will cancel phantomjs, in milliseconds
+
+  // HTTP Headers that are used for requests
+  //"httpHeaders": {
+    // e.g.
+    //"Authorization": "Bearer ACEFAD8C-4B4D-4042-AB30-6C735F5BAC8B"
+  //}
+  "httpCookies": [
+    // e.g.
+    {
+      "name": "Valid-Cookie-Name", // required
+      "value": "Valid-Cookie-Value", // required
+      "domain": "localhost",
+      "path": "/foo", // required
+    }
+  ],
+
+}
