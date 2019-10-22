@@ -41,32 +41,43 @@ export default class MapGenerator extends EventEmitter {
 
   async writePdf(html, dir) {
     log.debug('Writing PDF');
-    // const htmlPath = `${dir}/output.html`;
-    // fs.writeFileSync(htmlPath, html);
+    const htmlPath = `${dir}/output.html`;
+    fs.writeFileSync(htmlPath, html);
     const pdfResult = await pdf.createAsync(html, pdfOptions);
     const pdfPath = pdfResult.filename;
     await execAsync(`cp ${pdfPath} ${dir}`);
-    return pdfPath;
+    return [htmlPath, pdfPath];
   }
 
   generateCSS() {
     log.debug('Generating map css');
-    return '';
+    return `.map {
+      width: 800px;
+      height: 600px;
+      min - height: 400px;
+      background - color: grey;
+      margin: 250px;
+      margin - bottom: 0;
+    }
+  `;
   }
 
   generateMapScript(geojson) {
     log.debug('Generating map scripts');
-    const script = `(function map() {
-        var coords = {lat: ${this.latitude}, lng: ${this.longitude}};
+    const mapsApi = `<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlqEO0TxvUADVzritBclt3zMrKpUkq9Vc&callback=initMap"
+      async defer></script>`;
+    const mapScript = `<script>function initMap() {
+        console.log('arrived');
+        window.coords = {lat: ${this.latitude}, lng: ${this.longitude}};
         window.map = new google.maps.Map(document.getElementById('map'), {
-          center: coords,
+          center: window.coords,
           zoom: 12,
         });
-        var geojson = ${JSON.stringify(geojson)};
-        var layer = new google.maps.Data();
+        window.geojson = ${JSON.stringify(geojson)};
+        window.layer = new google.maps.Data();
 
-        layer.addGeoJson(geojson);
-        layer.setStyle({
+        window.layer.addGeoJson(geojson);
+        window.layer.setStyle({
           
         });
         layer.setMap(window.map);
@@ -75,8 +86,10 @@ export default class MapGenerator extends EventEmitter {
           map: window.map
         });
         window.map.setCenter(new google.maps.LatLng(window.map.getCenter().lat(), window.map.getCenter().lng() + .000000001));
-      }());
+      }</script>
       `;
+    const scripts = [mapScript, mapsApi];
+    const script = scripts.join('');
     return script;
   }
 

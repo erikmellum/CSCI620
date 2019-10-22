@@ -6,6 +6,7 @@ const args = { latitude: 39.728958, longitude: -121.838783 };
 const generator = new MapGenerator(args);
 const geojson = fs.readFileSync('./world.geojson');
 (async () => {
-  const map = await generator.generateMap(geojson);
-  opn(map);
+  const [htmlPath, pdfPath] = await generator.generateMap(geojson);
+  opn(pdfPath);
+  opn(htmlPath);
 })();

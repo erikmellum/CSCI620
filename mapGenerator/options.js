@@ -33,7 +33,7 @@ module.exports = {
     '--web-security=no',
     '--ignore-ssl-errors=yes'
   ],
-  "renderDelay": 0,
+  "renderDelay": 1000,
 
   // Script options
   //"phantomPath": `${__dirname}/../node_modules/phantomjs-prebuilt/bin/phantomjs`, // PhantomJS binary which should get downloaded automatically
