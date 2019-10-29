@@ -26,13 +26,13 @@
 
 ## Database
 
-- [ ] Docker container for PSQL
-- [ ] Set up Schema
+- [x] Docker container for PSQL
+- [x] Set up Schema
 
 ## Frontend
 
-- [ ] Set up project skeleton
-- [ ] Set up build pipeline
+- [x] Set up project skeleton
+- [x] Set up build pipeline
 - [ ] Create map page
 - [ ] View map page
 - [ ] Save map modal
