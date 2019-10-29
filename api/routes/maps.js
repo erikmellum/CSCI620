@@ -17,8 +17,6 @@ router.post('/', (req, res, next) => {
   const generator = new MapGenerator(args);
   const geojson = fs.readFileSync('../../mapGenerator/world.geojson');
   const [htmlPath, pdfPath] = await generator.generateMap(geojson);
-  // opn(pdfPath);
-  // opn(htmlPath);
   res.sendFile(pdfPath);
 });
 

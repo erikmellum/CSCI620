@@ -17,7 +17,7 @@
 
 - [x] Set up basic express
 - [x] Add readme
-- [ ] Choose ORM
+- [x] Choose ORM
 - [x] /maps GET 
 - [x] /maps/id GET 
 - [x] /maps POST
